@@ -59,6 +59,29 @@ public class Main {
                     String newgoal = in.next();
                     ModificaGiocatore(Giocatore[] squadra,nome,capitano,goal,newnome,newcapitano,newgoal);
                     break;
+                case 4:
+                    if (count==0){
+                        System.out.println("Non ci sono auto nel concessionario, inseriscine una");
+                        break;
+                    }
+                    int RicercaDaEliminare=-1;
+                    System.out.println("Inserisci il nome del giocatore da eliminare: ");
+                    nome = in.next();
+                    System.out.println("Ora inserisci se è capitano o meno (true/false): ");
+                    capitano = in.next();
+                    System.out.println("Ora inserisci i goal: ");
+                    goal = in.next();
+
+                    for (int i = 0; i < count; i++){
+                        if (arrayMarca[i].equalsIgnoreCase(marca) && arrayModello[i].equalsIgnoreCase(modello) && arrayPrezzo[i].equalsIgnoreCase(prezzo)){
+                            RicercaDaEliminare=i;
+                            break;
+                        }
+                    }
+                    if (RicercaDaEliminare==-1){
+                        System.out.println("Non è presente un'auto con questi dati");
+                    }
+                    count = EliminaGiocatore(squadra,RicercaDaEliminare,count);
                 case 0:
                     input = true;
                     System.out.println("Stai uscendo dal campo...");
@@ -84,11 +107,11 @@ public class Main {
         }
         return posizione;
     }
-    public static int EliminaGiocatore(String[]arrayMarca,String[]arrayModello, String[]arrayPrezzo, int ricercadaeliminare, int count){
+    public static int EliminaGiocatore(Giocatore[] squadra, int ricercadaeliminare, int count){
         for (int i = ricercadaeliminare; i < count; i++){
-            arrayMarca[i] = arrayMarca[i+1];
-            arrayModello[i] = arrayModello[i+1];
-            arrayPrezzo[i] = arrayPrezzo[i+1];
+            squadra[i] = squadra[i+1];
+            squadra[i] = squadra[i+1];
+            squadra[i] = squadra[i+1];
         }
         count = count-1;
         return count;
